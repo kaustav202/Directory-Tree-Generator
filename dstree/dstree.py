@@ -1,5 +1,5 @@
 import os
-import patlib
+import pathlib
 
 PIPE = "|"
 ELBOW = "└──"
@@ -9,7 +9,7 @@ SPACE_PREFIX = "    "
 
 class DirTree:
     def __init__(self,root_dir):
-        self._generator = _TreeGenerator(root_dir)
+        self._generator = _TreeGenerator(root_dir) #Composition
     
     def generate(self):
         tree = self._generator.build_tree()
@@ -20,7 +20,7 @@ class DirTree:
 class _TreeGenerator():
     def __init__(self,root_dir):
         self._tree = []
-        self._root_dir = patlib.Path(root_dir)
+        self._root_dir = pathlib.Path(root_dir)
     
     def build_tree(self):
         self._tree_head()
@@ -33,14 +33,14 @@ class _TreeGenerator():
 
     def _tree_body(self,directory,prefix = ""):
         entries = directory.iterdir()
+        entries = sorted(entries, key = lambda x : x.is_file())
         entry_count = len(entries)
-        entries = sorted(entries, key = lambda x : x.isfile())
         for index,entry in enumerate(entries):
             connector = ELBOW if index == entry_count-1 else TEE
-            if entry.isdir():
-                _add_directory(entry,index,entry_count,prefix,connector)
+            if entry.is_dir():
+                self._add_directory(entry,index,entry_count,prefix,connector)
             else:
-                _add_file(entry,prefix,connector)
+                self._add_file(entry,prefix,connector)
     
     
     
