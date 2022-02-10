@@ -17,3 +17,16 @@ class DirTree:
             print(item)
 
 
+class _TreeGenerator():
+    def __init__(self,root_dir):
+        self._tree = []
+        self._root_dir = patlib.Path(root_dir)
+    
+    def build_tree(self):
+        self._tree_head()
+        self._tree_body(self._root_dir)
+        return self._tree
+    
+    
+    
+    
