@@ -21,7 +21,7 @@ class _TreeGenerator():
     def __init__(self,root_dir):
         self._tree = []
         self._root_dir = pathlib.Path(root_dir)
-    
+
     def build_tree(self):
         self._tree_head()
         self._tree_body(self._root_dir)
@@ -54,4 +54,4 @@ class _TreeGenerator():
     
     def _add_file(self,file,prefix,connector):
         self._tree.append(f"{prefix}{connector}{file.name}")
-
+                            
