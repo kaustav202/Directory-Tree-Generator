@@ -54,4 +54,5 @@ class _TreeGenerator():
     
     def _add_file(self,file,prefix,connector):
         self._tree.append(f"{prefix}{connector}{file.name}")
-                            
+                        
+    
