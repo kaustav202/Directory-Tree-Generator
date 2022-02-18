@@ -14,3 +14,22 @@ def main():
     tree = DirTree(root_dir)
     tree.generate()
 
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        prog = "tree",
+        description = "DS Tree, a directory tree generator.",
+        epilog = "Thank you for using dstree!!"
+    )
+
+    parser.version = f"ds tree v{__version__}"
+    parser.add_argument("-v","--version", action = "version")
+    parser.add_argument(
+        "root_dir",
+        metavar = "ROOT_DIR",
+        nargs = "?",
+        default = ".",
+        help = "Generate directory tree starting at ROOT_DIR"
+    )
+    return parser.parse_args()
+    
