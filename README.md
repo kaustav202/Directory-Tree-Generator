@@ -6,3 +6,4 @@ A python implementation of the linux tree command that provides a tree like diag
 
 - Clone this repo on your local machine.
 - Open shell and navigate to the root of the cloned directory.
+- Run `python tree.py`
